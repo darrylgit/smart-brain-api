@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
+  # Backend API
   smart-brain-api:
     container_name: backend
-    # image: node:stretch
     build: ./
     command: npm start
     working_dir: /usr/src/smart-brain-api
@@ -11,3 +11,12 @@ services:
       - '3000:3000'
     volumes:
       - ./:/usr/src/smart-brain-api
+
+  # PostgreSQL
+  posgres:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=daniel
