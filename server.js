@@ -38,14 +38,15 @@ app.post('/register', (req, res) => {
 app.get('/profile/:id', (req, res) => {
   profile.handleProfileGet(req, res, db);
 });
+app.post('/profile/:id', (req, res) => {
+  profile.handleProfileUpdate(req, res, db);
+});
 app.put('/image', (req, res) => {
   image.handleImage(req, res, db);
 });
 app.post('/imageurl', (req, res) => {
   image.handleApiCall(req, res);
 });
-
-console.log(bcrypt.hashSync('passworda'));
 
 app.listen(3000, () => {
   console.log('app is running on port 3000');
